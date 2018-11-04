@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { ToDoItem } from './uicomponents/ToDoItem'
 
 class App extends Component {
   render() {
@@ -19,6 +20,10 @@ class App extends Component {
           >
             Learn React
           </a>
+          <ToDoItem
+            label="My first ToDo"
+            isDone
+          />
         </header>
       </div>
     );
