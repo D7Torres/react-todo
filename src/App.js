@@ -1,10 +1,25 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { ToDoItem } from './uicomponents/ToDoItem'
+import { ToDoList } from './uicomponents/ToDoList'
 
 class App extends Component {
   render() {
+    const todos = [
+      {
+        label: 'My todo 1',
+        isDone: true,
+      },
+      {
+        label: 'My todo 2',
+        isDone: false,
+      },
+      {
+        label: 'My todo 3',
+        isDone: true,
+      },
+    ]
+
     return (
       <div className="App">
         <header className="App-header">
@@ -20,10 +35,7 @@ class App extends Component {
           >
             Learn React
           </a>
-          <ToDoItem
-            label="My first ToDo"
-            isDone
-          />
+          <ToDoList todos={todos}/>
         </header>
       </div>
     );
