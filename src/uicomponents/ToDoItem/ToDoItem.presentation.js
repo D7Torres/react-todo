@@ -2,13 +2,14 @@ import React, { Fragment } from 'react'
 import css from './ToDoItem.module.css'
 import classnames from 'classnames'
 
-const ToDoItemPresentation = ({ label, isDone, onChange }) => {
+const ToDoItemPresentation = ({ id, label, isDone, onChange, deleteTodo }) => {
     const labelClass = classnames({ [css.isDone]: isDone })
 
     return (
         <Fragment>
-            <input type="checkbox" checked={isDone} onChange={onChange} />
+            <input id={id} type="checkbox" checked={isDone} onChange={onChange} />
             <span className={labelClass}>{label}</span>
+            <i onClick={(event) => deleteTodo(event.target.parentNode.querySelector('input').id)}>Borrar</i>
         </Fragment>
     )
 }

@@ -5,20 +5,25 @@ import { ToDoItem } from '../ToDoItem'
 
 const propTypes = {
     todos: PropTypes.arrayOf(PropTypes.shape({
-        isDone: PropTypes.bool,
-        label: PropTypes.string,
+        id: PropTypes.string.isRequired,
+        isDone: PropTypes.bool.isRequired,
+        label: PropTypes.string.isRequired,
     })),
+    deleteTodo: PropTypes.func.isRequired,
 }
 
 const defaultProps = {
     todos: [],
 }
 
-const ToDoList = ({ todos }) => {
+const ToDoList = ({ todos, deleteTodo }) => {
     const renderedTodos = todos.map((todoObj) => {
         const todo = <ToDoItem
+            key={todoObj.id}
+            id={todoObj.id}
             isDone={todoObj.isDone}
             label={todoObj.label}
+            deleteTodo={deleteTodo}
         />
 
         return <ToDoListItem todo={todo}/>

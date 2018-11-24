@@ -10,14 +10,16 @@ class ToDoItem extends React.PureComponent {
     }
 
     render() {
-        const { label } = this.props
+        const { id, label, deleteTodo } = this.props
         const { isDone } = this.state
 
         return (
             <ToDoItemPresentation
+                id={id}
                 label={label}
                 isDone={isDone}
                 onChange={this.onChangeHandler}
+                deleteTodo={deleteTodo}
             />
         )
     }

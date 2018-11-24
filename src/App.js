@@ -4,21 +4,36 @@ import './App.css';
 import { ToDoList } from './uicomponents/ToDoList'
 
 class App extends Component {
-  render() {
-    const todos = [
+  state = {
+    todos: [
       {
+        id: '1',
         label: 'My todo 1',
         isDone: true,
       },
       {
+        id: '2',
         label: 'My todo 2',
         isDone: false,
       },
       {
+        id: '3',
         label: 'My todo 3',
         isDone: true,
       },
     ]
+  }
+
+  deleteTodo = (id) => {
+    const { todos } = this.state
+    const newTodos = todos.filter(todo => todo.id !== id)
+    this.setState({
+      todos: newTodos,
+    })
+  }
+
+  render() {
+    const { todos } = this.state
 
     return (
       <div className="App">
@@ -35,7 +50,10 @@ class App extends Component {
           >
             Learn React
           </a>
-          <ToDoList todos={todos}/>
+          <ToDoList
+            todos={todos}
+            deleteTodo={this.deleteTodo}
+          />
         </header>
       </div>
     );
