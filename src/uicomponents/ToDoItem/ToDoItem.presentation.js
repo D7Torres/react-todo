@@ -4,6 +4,31 @@ import { todosAttributes } from "../../models/todosAttributes";
 import Slider from "@material-ui/lab/Slider";
 import css from "./ToDoItem.module.css";
 
+const renderSliders = (importance, urgency, onChange) => {
+  const { IMPORTANCE, URGENCY } = todosAttributes;
+
+  return (
+    <div className={css.sliders}>
+      <label>Importance:</label>
+      <Slider
+        value={importance}
+        min={0}
+        max={5}
+        step={1}
+        onChange={(event, value) => onChange(IMPORTANCE, value)}
+      />
+      <label>Urgency:</label>
+      <Slider
+        value={urgency}
+        min={0}
+        max={5}
+        step={1}
+        onChange={(event, value) => onChange(URGENCY, value)}
+      />
+    </div>
+  );
+};
+
 const ToDoItemPresentation = ({
   id,
   label,
@@ -14,7 +39,7 @@ const ToDoItemPresentation = ({
   deleteTodo
 }) => {
   const labelClass = classnames({ [css.isDone]: isDone });
-  const { IS_DONE, IMPORTANCE, URGENCY } = todosAttributes;
+  const { IS_DONE } = todosAttributes;
 
   return (
     <Fragment>
@@ -32,22 +57,7 @@ const ToDoItemPresentation = ({
       >
         Delete
       </i>
-      Importance:
-      <Slider
-        value={importance}
-        min={0}
-        max={5}
-        step={1}
-        onChange={(event, value) => onChange(IMPORTANCE, value)}
-      />
-      Urgency:
-      <Slider
-        value={urgency}
-        min={0}
-        max={5}
-        step={1}
-        onChange={(event, value) => onChange(URGENCY, value)}
-      />
+      {renderSliders(importance, urgency, onChange)}
     </Fragment>
   );
 };
