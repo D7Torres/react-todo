@@ -77,17 +77,15 @@ class App extends Component {
 
     return (
       <div className="App">
-        <header className="App-header">
-          <ToDosContext.Provider
-            value={{
-              todos,
-              deleteTodo,
-              changeTodo
-            }}
-          >
-            <ToDoList />
-          </ToDosContext.Provider>
-        </header>
+        <ToDosContext.Provider
+          value={{
+            todos,
+            deleteTodo,
+            changeTodo
+          }}
+        >
+          <ToDoList />
+        </ToDosContext.Provider>
       </div>
     );
   }

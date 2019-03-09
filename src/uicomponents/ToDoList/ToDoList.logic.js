@@ -1,13 +1,14 @@
 import React from "react";
 import { ToDoItem } from "../ToDoItem";
 import { ToDosContext } from "../../contexts/ToDosContext";
+import css from "./ToDoList.module.css";
 
 const ToDoList = () => (
   <ToDosContext.Consumer>
     {({ todos }) => (
-      <ul>
+      <ul className={css.todoList}>
         {Object.values(todos).map(todo => (
-          <li>
+          <li className={css.todo}>
             <ToDoItem todo={todo} />
           </li>
         ))}

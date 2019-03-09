@@ -1,0 +1,17 @@
+@value colors: "../../styles/colors.css";
+@value darkGrey from colors;
+
+.todoList {
+  padding: 0;
+  width: 100%;
+  max-width: 500px;
+}
+
+.todo {
+  background-color: darkGrey;
+  list-style: none;
+  padding: 20px;
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 430px;
+}
