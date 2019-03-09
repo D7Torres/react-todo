@@ -1,43 +1,10 @@
 import React, { Fragment } from "react";
 import classnames from "classnames";
 import { todosAttributes } from "../../models/todosAttributes";
-import Slider from "@material-ui/lab/Slider";
 import Checkbox from "@material-ui/core/Checkbox";
 import { FaTrashAlt } from "react-icons/fa";
 import css from "./ToDoItem.module.css";
-
-const renderSliders = (importance, urgency, onChange) => {
-  const { IMPORTANCE, URGENCY } = todosAttributes;
-
-  return (
-    <div className={css.content}>
-      <div class={css.attribute}>
-        <label>Importance:</label>
-        <span className={css.slider}>
-          <Slider
-            value={importance}
-            min={0}
-            max={5}
-            step={1}
-            onChange={(event, value) => onChange(IMPORTANCE, value)}
-          />
-        </span>
-      </div>
-      <div class={css.attribute}>
-        <label>Urgency:</label>
-        <span className={css.slider}>
-          <Slider
-            value={urgency}
-            min={0}
-            max={5}
-            step={1}
-            onChange={(event, value) => onChange(URGENCY, value)}
-          />
-        </span>
-      </div>
-    </div>
-  );
-};
+import { ToDoItemContent } from "../ToDoItemContent/ToDoItemContent.logic";
 
 const ToDoItemPresentation = ({
   id,
@@ -65,7 +32,11 @@ const ToDoItemPresentation = ({
         </div>
         <FaTrashAlt className={css.deleteIcon} onClick={() => deleteTodo(id)} />
       </div>
-      {renderSliders(importance, urgency, onChange)}
+      <ToDoItemContent
+        importance={importance}
+        urgency={urgency}
+        onChange={onChange}
+      />
     </Fragment>
   );
 };
