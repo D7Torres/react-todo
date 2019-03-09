@@ -8,7 +8,7 @@ const ToDoList = () => (
     {({ todos }) => (
       <ul className={css.todoList}>
         {Object.values(todos).map(todo => (
-          <li className={css.todo}>
+          <li key={todo.id} className={css.todo}>
             <ToDoItem todo={todo} />
           </li>
         ))}
