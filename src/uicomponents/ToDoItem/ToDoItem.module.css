@@ -1,6 +1,12 @@
+@value muiBlue from "../../styles/colors.css";
+
 .header {
   display: flex;
   justify-content: space-between;
+}
+
+.checkbox {
+  color: muiBlue !important; /* override material ui theme */
 }
 
 .isDone {

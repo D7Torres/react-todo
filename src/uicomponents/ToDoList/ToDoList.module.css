@@ -1,5 +1,4 @@
-@value colors: "../../styles/colors.css";
-@value darkGrey from colors;
+@value darkGrey from "../../styles/colors.css";
 
 .todoList {
   padding: 0;

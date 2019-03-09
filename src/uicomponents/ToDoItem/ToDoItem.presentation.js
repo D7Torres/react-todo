@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import classnames from "classnames";
 import { todosAttributes } from "../../models/todosAttributes";
 import Slider from "@material-ui/lab/Slider";
+import Checkbox from "@material-ui/core/Checkbox";
 import { FaTrashAlt } from "react-icons/fa";
 import css from "./ToDoItem.module.css";
 
@@ -54,11 +55,11 @@ const ToDoItemPresentation = ({
     <Fragment>
       <div className={css.header}>
         <div>
-          <input
-            id={id}
-            type="checkbox"
+          <Checkbox
+            color="primary"
             checked={isDone}
             onChange={() => onChange(IS_DONE)}
+            className={css.checkbox}
           />
           <label className={labelClass}>{label}</label>
         </div>
