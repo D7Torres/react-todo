@@ -1,59 +1,92 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { ToDoList } from './uicomponents/ToDoList'
+import React, { Component } from "react";
+import "./App.css";
+import { ToDoList } from "./uicomponents/ToDoList";
+import { ToDosContext } from "./contexts/ToDosContext";
+import { todosAttributes } from "./models/todosAttributes";
 
 class App extends Component {
   state = {
-    todos: [
-      {
-        id: '1',
-        label: 'My todo 1',
+    todos: {
+      "1": {
+        id: "1",
+        label: "My todo 1",
         isDone: true,
+        urgency: 0,
+        importance: 0
       },
-      {
-        id: '2',
-        label: 'My todo 2',
+      "2": {
+        id: "2",
+        label: "My todo 2",
         isDone: false,
+        urgency: 0,
+        importance: 0
       },
-      {
-        id: '3',
-        label: 'My todo 3',
+      "3": {
+        id: "3",
+        label: "My todo 3",
         isDone: true,
-      },
-    ]
-  }
+        urgency: 0,
+        importance: 0
+      }
+    }
+  };
 
-  deleteTodo = (id) => {
-    const { todos } = this.state
-    const newTodos = todos.filter(todo => todo.id !== id)
+  deleteTodo = id => {
+    const { todos } = this.state;
+    const newTodos = Object.assign({}, todos);
+    delete newTodos[id];
+
     this.setState({
-      todos: newTodos,
-    })
-  }
+      todos: newTodos
+    });
+  };
+
+  changeTodo = (todoId, attribute, value) => {
+    const { IS_DONE, IMPORTANCE, URGENCY } = todosAttributes;
+    const newTodo = {
+      ...this.state.todos[todoId]
+    };
+
+    switch (attribute) {
+      case IS_DONE:
+        newTodo.isDone = !newTodo.isDone;
+        break;
+
+      case IMPORTANCE:
+        newTodo.importance = value;
+        break;
+
+      case URGENCY:
+        newTodo.urgency = value;
+        break;
+
+      default:
+    }
+
+    this.setState({
+      todos: {
+        ...this.state.todos,
+        [todoId]: newTodo
+      }
+    });
+  };
 
   render() {
-    const { todos } = this.state
+    const { todos } = this.state;
+    const { deleteTodo, changeTodo } = this;
 
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
+          <ToDosContext.Provider
+            value={{
+              todos,
+              deleteTodo,
+              changeTodo
+            }}
           >
-            Learn React
-          </a>
-          <ToDoList
-            todos={todos}
-            deleteTodo={this.deleteTodo}
-          />
+            <ToDoList />
+          </ToDosContext.Provider>
         </header>
       </div>
     );
