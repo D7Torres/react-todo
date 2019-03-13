@@ -4,7 +4,7 @@ import Slider from "@material-ui/lab/Slider";
 import css from "./ToDoItemContent.module.css";
 
 const renderAttribute = (label, value, attribute, onChange) => (
-  <div class={css.attribute}>
+  <div className={css.attribute}>
     <label>{label}</label>
     <span className={css.slider}>
       <Slider
