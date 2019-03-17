@@ -9,10 +9,6 @@
   color: muiBlue !important; /* override material ui theme */
 }
 
-.isDone {
-  text-decoration: line-through;
-}
-
 .deleteIcon {
   cursor: pointer;
 }

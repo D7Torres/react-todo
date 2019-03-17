@@ -1,28 +1,31 @@
-import React from "react";
-import classnames from "classnames";
-import { todosAttributes } from "../../models/todosAttributes";
-import Checkbox from "@material-ui/core/Checkbox";
-import { FaTrashAlt } from "react-icons/fa";
-import css from "./ToDoItemHeader.module.css";
+import React, { PureComponent } from "react";
+import { ToDoItemHeaderPresentation } from "./ToDoItemHeader.presentation";
 
-const ToDoItemHeader = ({ id, label, isDone, onChange, deleteTodo }) => {
-  const labelClass = classnames({ [css.isDone]: isDone });
-  const { IS_DONE } = todosAttributes;
+class ToDoItemHeader extends PureComponent {
+  state = {
+    isEditEnabled: false
+  };
 
-  return (
-    <div className={css.header}>
-      <div>
-        <Checkbox
-          color="primary"
-          checked={isDone}
-          onChange={() => onChange(IS_DONE)}
-          className={css.checkbox}
-        />
-        <label className={labelClass}>{label}</label>
-      </div>
-      <FaTrashAlt className={css.deleteIcon} onClick={() => deleteTodo(id)} />
-    </div>
-  );
-};
+  setIsEditEnabled = value => {
+    this.setState({ isEditEnabled: value });
+  };
+
+  render = () => {
+    const { id, label, isDone, onChange, deleteTodo } = this.props;
+    const { isEditEnabled } = this.state;
+
+    return (
+      <ToDoItemHeaderPresentation
+        id={id}
+        label={label}
+        isDone={isDone}
+        onChange={onChange}
+        deleteTodo={deleteTodo}
+        isEditEnabled={isEditEnabled}
+        setIsEditEnabled={this.setIsEditEnabled}
+      />
+    );
+  };
+}
 
 export { ToDoItemHeader };
