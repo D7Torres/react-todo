@@ -4,6 +4,10 @@
   text-decoration: line-through;
 }
 
+.label {
+  cursor: text;
+}
+
 .textfield input:focus {
   color: white !important; /* override material ui theme */
 }

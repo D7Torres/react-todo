@@ -24,7 +24,7 @@ const ToDoItemLabelPresentation = ({
       />
     );
   }
-  const labelClass = classnames({ [css.crossed]: isCrossed });
+  const labelClass = classnames(css.label, { [css.crossed]: isCrossed });
 
   return (
     <label className={labelClass} onClick={() => setIsEditEnabled(true)}>
