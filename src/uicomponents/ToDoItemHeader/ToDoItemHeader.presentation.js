@@ -16,7 +16,7 @@ const ToDoItemHeaderPresentation = ({
 
   return (
     <div className={css.header}>
-      <div>
+      <div className={css.checkboxAndLabelContainer}>
         <Checkbox
           color="primary"
           checked={isDone}

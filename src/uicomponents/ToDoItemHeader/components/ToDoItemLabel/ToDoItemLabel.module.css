@@ -1,3 +1,9 @@
+@value muiBlue from "../../../../styles/colors.css";
+
 .crossed {
   text-decoration: line-through;
+}
+
+.textfield input:focus {
+  color: white !important; /* override material ui theme */
 }

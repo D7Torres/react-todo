@@ -20,6 +20,7 @@ const ToDoItemLabelPresentation = ({
         autoFocus
         onChange={onChangeHandler}
         onBlur={() => setIsEditEnabled(false)}
+        className={css.textfield}
       />
     );
   }

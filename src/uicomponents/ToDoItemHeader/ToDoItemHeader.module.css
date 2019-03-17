@@ -5,6 +5,12 @@
   justify-content: space-between;
 }
 
+.checkboxAndLabelContainer {
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+}
+
 .checkbox {
   color: muiBlue !important; /* override material ui theme */
 }
