@@ -23,7 +23,7 @@ const ToDoItemHeaderPresentation = ({
           onChange={() => onChange(IS_DONE)}
           className={css.checkbox}
         />
-        <ToDoItemLabel label={label} isCrossed={isDone} />
+        <ToDoItemLabel todoId={id} label={label} isCrossed={isDone} />
       </div>
       <FaTrashAlt className={css.deleteIcon} onClick={() => deleteTodo(id)} />
     </div>

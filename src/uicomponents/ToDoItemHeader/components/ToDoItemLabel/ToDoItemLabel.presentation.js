@@ -8,11 +8,19 @@ const ToDoItemLabelPresentation = ({
   label,
   isCrossed,
   isEditEnabled,
-  setIsEditEnabled
+  setIsEditEnabled,
+  onChangeHandler
 }) => {
   if (isEditEnabled) {
     return (
-      <TextField value={label} margin="normal" variant="outlined" autoFocus />
+      <TextField
+        value={label}
+        margin="normal"
+        variant="outlined"
+        autoFocus
+        onChange={onChangeHandler}
+        onBlur={() => setIsEditEnabled(false)}
+      />
     );
   }
   const labelClass = classnames({ [css.crossed]: isCrossed });
@@ -28,7 +36,8 @@ ToDoItemLabelPresentation.propTypes = {
   label: PropTypes.string,
   isCrossed: PropTypes.bool,
   isEditEnabled: PropTypes.bool,
-  setIsEditEnabled: PropTypes.func.isRequired
+  setIsEditEnabled: PropTypes.func.isRequired,
+  onChangeHandler: PropTypes.func.isRequired
 };
 
 ToDoItemLabelPresentation.defaultProps = {

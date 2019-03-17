@@ -6,7 +6,9 @@ describe("<ToDoItemLabel />", () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = mount(<ToDoItemLabel label="A label" isEditEnabled={false} />);
+    wrapper = mount(
+      <ToDoItemLabel todoId="111" label="A label" isEditEnabled={false} />
+    );
   });
 
   describe("Render", () => {
@@ -27,14 +29,32 @@ describe("<ToDoItemLabel />", () => {
   });
 
   describe("Behaviour", () => {
-    test("should render the editable label when the label is clicked", () => {
-      const label = wrapper.find("label");
-      label.simulate("click");
-      const textField = wrapper.find("TextField");
-      const value = textField.find("input[type='text']").prop("value");
+    describe("Editable", () => {
+      beforeEach(() => {
+        const label = wrapper.find("label");
+        label.simulate("click");
+      });
 
-      expect(textField).toHaveLength(1);
-      expect(value).toBe("A label");
+      test("the editable label should replace the normal label when the label is clicked", () => {
+        const textField = wrapper.find("TextField");
+        const value = textField.find("input[type='text']").prop("value");
+
+        expect(textField).toHaveLength(1);
+        expect(value).toBe("A label");
+        expect(wrapper.find("label")).toHaveLength(0);
+      });
+
+      test("the normal label should replace the editable label when the editable label looses focus", () => {
+        let textField = wrapper.find("TextField");
+        const input = textField.find("input[type='text']");
+        input.simulate("blur");
+        textField = wrapper.find("TextField");
+        const label = wrapper.find("label");
+
+        expect(textField).toHaveLength(0);
+        expect(label).toHaveLength(1);
+        expect(label.text()).toBe("A label");
+      });
     });
   });
 });

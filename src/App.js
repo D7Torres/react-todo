@@ -42,12 +42,16 @@ class App extends Component {
   };
 
   changeTodo = (todoId, attribute, value) => {
-    const { IS_DONE, IMPORTANCE, URGENCY } = todosAttributes;
+    const { IS_DONE, IMPORTANCE, URGENCY, LABEL } = todosAttributes;
     const newTodo = {
       ...this.state.todos[todoId]
     };
 
     switch (attribute) {
+      case LABEL:
+        newTodo.label = value;
+        break;
+
       case IS_DONE:
         newTodo.isDone = !newTodo.isDone;
         break;
