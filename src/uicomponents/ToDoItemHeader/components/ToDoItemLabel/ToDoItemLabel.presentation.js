@@ -11,7 +11,9 @@ const ToDoItemLabelPresentation = ({
   setIsEditEnabled
 }) => {
   if (isEditEnabled) {
-    return <TextField value={label} margin="normal" variant="outlined" />;
+    return (
+      <TextField value={label} margin="normal" variant="outlined" autoFocus />
+    );
   }
   const labelClass = classnames({ [css.crossed]: isCrossed });
 
