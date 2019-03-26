@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import uuidv1 from "uuid/v1";
 import "./App.css";
 import { ToDoList } from "./uicomponents/ToDoList";
 import { ToDosContext } from "./contexts/ToDosContext";
@@ -41,6 +42,23 @@ class App extends Component {
     });
   };
 
+  createTodo = () => {
+    const { todos } = this.state;
+    const newTodos = Object.assign({}, todos);
+    const todoId = uuidv1();
+    newTodos[todoId] = {
+      id: todoId,
+      label: "New ToDo",
+      isDone: false,
+      urgency: 0,
+      importance: 0
+    };
+
+    this.setState({
+      todos: newTodos
+    });
+  };
+
   changeTodo = (todoId, attribute, value) => {
     const { IS_DONE, IMPORTANCE, URGENCY, LABEL } = todosAttributes;
     const newTodo = {
@@ -77,7 +95,7 @@ class App extends Component {
 
   render() {
     const { todos } = this.state;
-    const { deleteTodo, changeTodo } = this;
+    const { deleteTodo, changeTodo, createTodo } = this;
 
     return (
       <div className="App">
@@ -85,7 +103,8 @@ class App extends Component {
           value={{
             todos,
             deleteTodo,
-            changeTodo
+            changeTodo,
+            createTodo
           }}
         >
           <ToDoList />
