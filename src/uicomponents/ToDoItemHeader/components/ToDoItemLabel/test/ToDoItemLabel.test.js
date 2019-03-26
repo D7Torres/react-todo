@@ -24,7 +24,14 @@ describe("<ToDoItemLabel />", () => {
       wrapper.setProps({
         isCrossed: true
       });
-      expect(wrapper.find("label").prop("className")).toBe("crossed");
+      expect(wrapper.find("label").prop("className")).toContain("crossed");
+    });
+
+    test("the label is not crossed when the isCross prop is false", () => {
+      wrapper.setProps({
+        isCrossed: false
+      });
+      expect(wrapper.find("label").prop("className")).not.toContain("crossed");
     });
   });
 
