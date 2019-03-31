@@ -16,19 +16,26 @@ const todos2ChartData = todos => {
     });
 };
 
-const tooltip = ({ id, x, y }) => {
-  const label = id.substring(id.indexOf(" ") + 1, id.lastIndexOf("."));
-  return tooltipPresentation(label, x, y);
+const tooltip = ({ x, y }, chartData) => {
+  const ids = chartData
+    .filter(point => point.data[0].x === x && point.data[0].y === y)
+    .map(({ id }) => id);
+
+  return tooltipPresentation(ids, x, y);
 };
 
 const ToDosChart = () => (
   <ToDosContext.Consumer>
-    {({ todos }) => (
-      <ToDosChartPresentation
-        tooltip={tooltip}
-        chartData={todos2ChartData(todos)}
-      />
-    )}
+    {({ todos }) => {
+      const chartData = todos2ChartData(todos);
+
+      return (
+        <ToDosChartPresentation
+          tooltip={pointObject => tooltip(pointObject, chartData)}
+          chartData={chartData}
+        />
+      );
+    }}
   </ToDosContext.Consumer>
 );
 

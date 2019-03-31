@@ -1,9 +1,21 @@
 import React from "react";
 import { ResponsiveScatterPlot } from "@nivo/scatterplot";
 import css from "./ToDosChart.module.css";
-const tooltipPresentation = (label, x, y) => (
+
+// In this context, Id is the id of the scatterplot series, wich is the uuid of
+// the To Do + the label of the To Do, separated by a space
+
+const getUuidFromId = id => id.substring(0, id.indexOf(" "));
+
+const getLabelFromId = id => id.substring(id.indexOf(" ") + 1);
+
+const tooltipPresentation = (ids, x, y) => (
   <div className={css.tooltip}>
-    <div className={css.tooltipLabel}>{label}</div>
+    {ids.map(id => (
+      <div key={getUuidFromId(id)} className={css.tooltipLabel}>
+        {getLabelFromId(id)}
+      </div>
+    ))}
     <div>
       <span>Urgency: </span>
       <span className={css.tooltipCoordinate}>{x}</span>
