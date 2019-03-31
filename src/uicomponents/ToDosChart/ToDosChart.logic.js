@@ -6,12 +6,14 @@ import {
 import { ToDosContext } from "../../contexts/ToDosContext";
 
 const todos2ChartData = todos => {
-  return Object.values(todos).map(({ id, label, urgency, importance }) => {
-    return {
-      id: `${id} ${label}`,
-      data: [{ x: urgency, y: importance }]
-    };
-  });
+  return Object.values(todos)
+    .filter(({ isDone }) => !isDone)
+    .map(({ id, label, urgency, importance }) => {
+      return {
+        id: `${id} ${label}`,
+        data: [{ x: urgency, y: importance }]
+      };
+    });
 };
 
 const tooltip = ({ id, x, y }) => {

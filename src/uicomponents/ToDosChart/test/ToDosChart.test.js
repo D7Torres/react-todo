@@ -21,9 +21,8 @@ describe("<ToDosChart />", () => {
       expect(wrapper.find("ResponsiveScatterPlot")).toHaveLength(1);
     });
 
-    test("the todos data is formatted and passed to the ResponsiveScatterPlot component", () => {
+    test("the todos data is formatted and passed to the ResponsiveScatterPlot component, filtering out the completed ones", () => {
       const expectedData = [
-        { id: "1 My todo 1", data: [{ x: 3, y: 4 }] },
         { id: "2 My todo 2", data: [{ x: 0, y: 1 }] },
         { id: "3 My todo 3", data: [{ x: 5, y: 2 }] }
       ];

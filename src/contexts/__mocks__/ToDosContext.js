@@ -17,7 +17,7 @@ export const context = {
     "3": {
       id: "3",
       label: "My todo 3",
-      isDone: true,
+      isDone: false,
       urgency: 5,
       importance: 2
     }
