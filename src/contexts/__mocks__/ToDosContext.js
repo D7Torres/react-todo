@@ -4,22 +4,22 @@ export const context = {
       id: "1",
       label: "My todo 1",
       isDone: true,
-      urgency: 0,
-      importance: 0
+      urgency: 3,
+      importance: 4
     },
     "2": {
       id: "2",
       label: "My todo 2",
       isDone: false,
       urgency: 0,
-      importance: 0
+      importance: 1
     },
     "3": {
       id: "3",
       label: "My todo 3",
       isDone: true,
-      urgency: 0,
-      importance: 0
+      urgency: 5,
+      importance: 2
     }
   },
   deleteTodo: jest.fn(),

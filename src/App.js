@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import uuidv1 from "uuid/v1";
 import "./App.css";
+import { ToDosChart } from "./uicomponents/ToDosChart";
 import { ToDoList } from "./uicomponents/ToDoList";
 import { ToDosContext } from "./contexts/ToDosContext";
 import { todosAttributes } from "./models/todosAttributes";
@@ -107,6 +108,7 @@ class App extends Component {
             createTodo
           }}
         >
+          <ToDosChart />
           <ToDoList />
         </ToDosContext.Provider>
       </div>

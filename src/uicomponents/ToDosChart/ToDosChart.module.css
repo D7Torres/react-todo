@@ -1,0 +1,19 @@
+@value darkGrey from "../../styles/colors.css";
+
+.chart {
+  width: 470px;
+  height: 400px;
+}
+
+.tooltip {
+  color: darkGrey;
+}
+
+.tooltipLabel {
+  font-weight: bold;
+}
+
+.tooltipCoordinate {
+  font-weight: bold;
+  margin-right: 15px;
+}
