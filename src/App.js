@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import uuidv1 from "uuid/v1";
 import "./App.css";
+import AppBar from "@material-ui/core/AppBar";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import SwipeableViews from "react-swipeable-views";
 import { ToDosChart } from "./uicomponents/ToDosChart";
 import { ToDoList } from "./uicomponents/ToDoList";
 import { ToDosContext } from "./contexts/ToDosContext";
@@ -30,7 +34,8 @@ class App extends Component {
         urgency: 4,
         importance: 5
       }
-    }
+    },
+    tabValue: 0
   };
 
   deleteTodo = id => {
@@ -94,6 +99,14 @@ class App extends Component {
     });
   };
 
+  handleChangeTab = (_event, tabValue) => {
+    this.setState({ tabValue });
+  };
+
+  handleChangeView = index => {
+    this.setState({ tabValue: index });
+  };
+
   render() {
     const { todos } = this.state;
     const { deleteTodo, changeTodo, createTodo } = this;
@@ -108,8 +121,26 @@ class App extends Component {
             createTodo
           }}
         >
-          <ToDosChart />
-          <ToDoList />
+          <AppBar position="static" color="default">
+            <Tabs
+              value={this.state.tabValue}
+              onChange={this.handleChangeTab}
+              indicatorColor="primary"
+              textColor="primary"
+              variant="fullWidth"
+            >
+              <Tab label="To Dos" />
+              <Tab label="Chart" />
+            </Tabs>
+          </AppBar>
+          <SwipeableViews
+            index={this.state.tabValue}
+            onChangeIndex={this.handleChangeView}
+            enableMouseEvents
+          >
+            <ToDoList />
+            <ToDosChart />
+          </SwipeableViews>
         </ToDosContext.Provider>
       </div>
     );
