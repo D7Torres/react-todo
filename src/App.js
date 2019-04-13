@@ -4,6 +4,7 @@ import css from "./App.module.css";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
+import Grid from "@material-ui/core/Grid";
 import SwipeableViews from "react-swipeable-views";
 import { ToDosChart } from "./uicomponents/ToDosChart";
 import { ToDoList } from "./uicomponents/ToDoList";
@@ -138,8 +139,16 @@ class App extends Component {
             onChangeIndex={this.handleChangeView}
             enableMouseEvents
           >
-            <ToDoList />
-            <ToDosChart />
+            <Grid container justify="center">
+              <Grid item>
+                <ToDoList />
+              </Grid>
+            </Grid>
+            <Grid container justify="center">
+              <Grid item>
+                <ToDosChart />
+              </Grid>
+            </Grid>
           </SwipeableViews>
         </ToDosContext.Provider>
       </div>
