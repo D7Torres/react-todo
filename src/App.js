@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import uuidv1 from "uuid/v1";
-import "./App.css";
+import css from "./App.module.css";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
@@ -112,7 +112,7 @@ class App extends Component {
     const { deleteTodo, changeTodo, createTodo } = this;
 
     return (
-      <div className="App">
+      <div className={css.app}>
         <ToDosContext.Provider
           value={{
             todos,
