@@ -5,6 +5,8 @@ import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Grid from "@material-ui/core/Grid";
+import Fab from "@material-ui/core/Fab";
+import { FaPlus } from "react-icons/fa";
 import SwipeableViews from "react-swipeable-views";
 import { ToDosChart } from "./uicomponents/ToDosChart";
 import { ToDoList } from "./uicomponents/ToDoList";
@@ -114,6 +116,14 @@ class App extends Component {
 
     return (
       <div className={css.app}>
+        <Fab
+          className={css.fab}
+          color="primary"
+          aria-label="New ToDo"
+          onClick={createTodo}
+        >
+          <FaPlus />
+        </Fab>
         <ToDosContext.Provider
           value={{
             todos,

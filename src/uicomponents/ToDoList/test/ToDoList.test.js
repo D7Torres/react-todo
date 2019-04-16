@@ -26,16 +26,4 @@ describe("<ToDoList />", () => {
       expect(items.at(2).text()).toContain("My todo 3");
     });
   });
-
-  describe("Behaviour", () => {
-    test("createTodo in the context is called when the Create button is clicked", () => {
-      const createButton = wrapper.find("Fab");
-
-      expect(context.createTodo).toHaveBeenCalledTimes(0);
-
-      createButton.simulate("click");
-
-      expect(context.createTodo).toHaveBeenCalledTimes(1);
-    });
-  });
 });

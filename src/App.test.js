@@ -48,5 +48,21 @@ describe("App", () => {
         });
       });
     });
+
+    describe("clicking the Plus fab", () => {
+      test("calls the createTodo function", () => {
+        const createTodoSpy = jest
+          .spyOn(wrapper.instance(), "createTodo")
+          .mockImplementation(() => {});
+        wrapper.instance().forceUpdate();
+        const createButton = wrapper.find("Fab");
+
+        expect(createTodoSpy).toHaveBeenCalledTimes(0);
+
+        createButton.simulate("click");
+
+        expect(createTodoSpy).toHaveBeenCalledTimes(1);
+      });
+    });
   });
 });

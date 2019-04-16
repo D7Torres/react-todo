@@ -4,3 +4,10 @@
   color: white;
   width: 100%;
 }
+
+button.fab {
+  position: fixed;
+  bottom: 5vh;
+  right: 5vw;
+  z-index: 10;
+}
