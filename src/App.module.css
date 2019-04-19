@@ -5,6 +5,11 @@
   width: 100%;
 }
 
+.page {
+  display: flex;
+  justify-content: center;
+}
+
 button.fab {
   position: fixed;
   bottom: 5vh;
