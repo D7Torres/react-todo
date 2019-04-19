@@ -6,6 +6,8 @@
 
 .label {
   cursor: text;
+  min-width: inherit;
+  word-wrap: break-word;
 }
 
 .textfield input:focus {
