@@ -15,7 +15,7 @@ const ToDoItemLabelPresentation = ({
     return (
       <TextField
         value={label}
-        margin="normal"
+        margin="dense"
         variant="outlined"
         autoFocus
         onChange={onChangeHandler}

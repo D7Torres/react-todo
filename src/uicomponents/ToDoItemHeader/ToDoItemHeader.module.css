@@ -6,7 +6,7 @@
 }
 
 .checkboxAndLabelContainer {
-  min-height: 80px;
+  min-height: 60px;
   display: flex;
   align-items: center;
 }
