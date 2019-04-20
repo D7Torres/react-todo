@@ -1,4 +1,4 @@
-@value darkGrey from "../../styles/colors.css";
+@value darkGrey, muiBlue from "../../styles/colors.css";
 
 .todoList {
   padding: 0;
@@ -15,4 +15,12 @@
   width: 100%;
   max-width: 430px;
   box-sizing: border-box;
+}
+
+.noToDosMessage {
+  padding: 15px;
+}
+
+.noToDosMessageIcon {
+  color: muiBlue;
 }
