@@ -14,29 +14,7 @@ import { todosAttributes } from "./models/todosAttributes";
 
 class App extends Component {
   state = {
-    todos: {
-      "1": {
-        id: "1",
-        label: "My todo 1",
-        isDone: true,
-        urgency: 1,
-        importance: 2
-      },
-      "2": {
-        id: "2",
-        label: "My todo 2",
-        isDone: false,
-        urgency: 3,
-        importance: 0
-      },
-      "3": {
-        id: "3",
-        label: "My todo 3",
-        isDone: true,
-        urgency: 4,
-        importance: 5
-      }
-    },
+    todos: {},
     tabValue: 0
   };
 
